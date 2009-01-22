@@ -1,5 +1,5 @@
 /*
-*    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+*    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
@@ -21,7 +21,7 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 #include "curlpp/Exception.hpp"
 
 curlpp::RuntimeError::~RuntimeError() throw()
@@ -146,5 +146,5 @@ void curlpp::logicAssert(const char * reason, bool isOkay)
 }
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "Exception.ins"
+	#include "./Exception.ins"
 #endif

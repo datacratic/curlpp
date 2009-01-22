@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -26,8 +26,9 @@
 #define CURLPP_INFO_HPP
 
 
-#include "buildconfig.h"
-#include "Easy.hpp"
+#include "curlpp/internal/buildconfig.h"
+
+#include "curlpp/Easy.hpp"
 
 
 namespace curlpp
@@ -117,7 +118,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "Info.inl"
+	#include "curlpp/Info.inl"
 #endif
 
 

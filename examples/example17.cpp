@@ -21,12 +21,14 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <cstdlib>
-
 #include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <curlpp/Infos.hpp>
+
+#include <cstdlib>
+
 
 struct MethodClass
 {
@@ -43,8 +45,10 @@ public:
   size_t write(curlpp::Easy *handle, char* ptr, size_t size, size_t nmemb)
   {
     ++writeRound;
-    curlpp::options::Url url;
-    handle->getOpt(&url);
+
+		curlpp::options::Url url;
+    handle->getOpt(url);
+
     // Calculate the real size of the incoming buffer
     size_t realsize = size * nmemb;
     std::cerr << "write round: " << writeRound << ", url: " << url.getValue() << std::endl;

@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,60 +21,90 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "curlpp/global.h"
-#include "curlpp/buildconfig.h"
-
 #include "curlpp/Easy.hpp"
-
 #include "curlpp/Options.hpp"
 
+#include "curlpp/internal/global.h"
+#include "curlpp/internal/buildconfig.h"
+
+
 curlpp::Easy::Easy()
-  : myCurl(new CurlHandle())
+: mCurl(new internal::CurlHandle())
 {}
 
-curlpp::Easy::Easy(std::auto_ptr<CurlHandle> handle)
-  : myCurl(handle)
+
+curlpp::Easy::Easy(std::auto_ptr<internal::CurlHandle> handle)
+  : mCurl(handle)
 {}
+
 
 curlpp::Easy::~Easy()
 {}
 
+
 void 
 curlpp::Easy::perform()
 {
-    myCurl->perform();
+	mCurl->perform();
 }
+
 
 CURL *
 curlpp::Easy::getHandle() const
 {
-  return myCurl->getHandle();
+	return mCurl->getHandle();
 }
 
-void
-curlpp::Easy::setOpt(const curlpp::OptionBase & option)
-{
-    setOpt(option.clone());    
-}
 
 void
-curlpp::Easy::setOpt(curlpp::OptionBase * option)
+curlpp::Easy::setOpt(const OptionBase & option)
 {
-  option->updateHandleToMe(myCurl.get());
-  OptionList::setOpt(option);    
+	setOpt(option.clone());    
 }
 
+
 void
-curlpp::Easy::setOpt(const curlpp::OptionList & options)
+curlpp::Easy::setOpt(std::auto_ptr<OptionBase> option)
 {
-    OptionList::setOpt(options);    
+	option->updateHandleToMe(mCurl.get());
+	mOptions.setOpt(option.release());    
 }
+
+
+void
+curlpp::Easy::setOpt(OptionBase * option)
+{
+	option->updateHandleToMe(mCurl.get());
+	mOptions.setOpt(option);    
+}
+
+
+void
+curlpp::Easy::getOpt(OptionBase * option) const
+{
+	mOptions.getOpt(option);
+}
+
+
+void
+curlpp::Easy::getOpt(OptionBase & option) const
+{
+	mOptions.getOpt(&option);
+}
+
+
+void
+curlpp::Easy::setOpt(const internal::OptionList & options)
+{
+	mOptions.setOpt(options);    
+}
+
 
 void
 curlpp::Easy::reset ()
 {
-  myCurl->reset();
-  OptionList::setOpt(OptionList());
+	mCurl->reset();
+	mOptions.setOpt(internal::OptionList());
 }
 
 
@@ -90,5 +120,5 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
 
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "Easy.ins"
+	#include "./Easy.ins"
 #endif

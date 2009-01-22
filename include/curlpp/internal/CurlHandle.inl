@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2006> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,46 +21,56 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef CURLPP_HANDLE_HPP
-#define CURLPP_HANDLE_HPP
+
+#ifndef CURLPP_CURLHANDLE_INL
+#define CURLPP_CURLHANDLE_INL
 
 
-#include "curlpp/buildconfig.h"
-#include "curlpp/OptionList.hpp"
-#include "curlpp/curlpp.hpp"
+#include "curlpp/Exception.hpp"
 
 
 namespace curlpp
 {
 
 
-	/**
-	* \todo class Handle brief description.
-	*
-	* \todo class Handle detail description.
-	*/
+namespace internal
+{
 
-	CURLPPAPI class Handle : public OptionList
-	{
 
-	private:
+template<typename OptionType>
+void 
+CurlHandle::option(CURLoption optionType, 
+OptionType value)
+{
+	CURLcode code;
+	code = curl_easy_setopt(mCurl, optionType, value);
+	libcurlRuntimeAssert(mErrorBuffer, code);
+}
 
-		void updateMeToOption(const OptionBase & option);
 
-	public: 
+template<typename OptionType, CURLoption optionType>
+void 
+CurlHandle::option(OptionType value)
+{
+	option(optionType, value);
+}
 
-		void perform();
 
-	private:
+template <typename T>
+void 
+CurlHandle::getInfo(CURLINFO info, T & value)
+{
+	CURLcode code;
+	code = curl_easy_getinfo(mCurl, info, & value);
+	libcurlRuntimeAssert(mErrorBuffer, code);
+}
 
-		Curl myCurl;
 
-	};
+} // namespace internal
 
 
 } // namespace curlpp
 
-namespace cURLpp = curlpp;
 
+#endif 
 
-#endif // #ifndef CURLPP_HANDLE_HPP

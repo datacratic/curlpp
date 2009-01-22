@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -26,10 +26,11 @@
 #define CURLPP_INFOS_HPP
 
 
-#include <curl/curl.h>
-#include <list>
+#include "curlpp/Info.hpp"
 
-#include "Info.hpp"
+#include <curl/curl.h>
+
+#include <list>
 
 
 namespace curlpp

@@ -1,5 +1,5 @@
 /*
-*    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+*    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
@@ -24,14 +24,22 @@
 #ifndef CURLPP_CURL_HANDLE_HPP
 #define CURLPP_CURL_HANDLE_HPP
 
-#include <memory>
+
+#include "curlpp/internal/buildconfig.h"
+
+#include "curlpp/Exception.hpp"
+#include "curlpp/Types.hpp"
+
 #include <curl/curl.h>
 
-#include "buildconfig.h"
-#include "Exception.hpp"
-#include "Types.hpp"
+#include <memory>
+
 
 namespace curlpp
+{
+
+
+namespace internal
 {
 
 
@@ -183,13 +191,16 @@ namespace curlpp
 	};
 
 
+} // namespace internal
+
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "CurlHandle.inl"
+	#include "curlpp/internal/CurlHandle.inl"
 #endif
 
 

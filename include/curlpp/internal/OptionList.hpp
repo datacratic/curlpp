@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -24,12 +24,18 @@
 #ifndef CURLPP_OPTION_LIST_HPP
 #define CURLPP_OPTION_LIST_HPP
 
+#include "curlpp/internal/buildconfig.h"
+
+#include "curlpp/OptionBase.hpp"
+
 #include <map>
 
-#include "buildconfig.h"
-#include "OptionBase.hpp"
 
 namespace curlpp
+{
+
+
+namespace internal
 {
 
 
@@ -42,6 +48,8 @@ namespace curlpp
 	{
 
 	public:
+
+		typedef std::map<CURLoption, curlpp::OptionBase *> mapType;
 
 		/**
 		* This construction initialize an empty list of options.
@@ -94,16 +102,17 @@ namespace curlpp
 		*/
 		//OptionList & operator=(const OptionList & rhs);
 
-		typedef std::map<CURLoption, curlpp::OptionBase *> mapType;
 
 	private:
 
-		curlpp::OptionList::mapType mOptions;
+		void insert(const OptionList::mapType & other);
 
-		void insert(const curlpp::OptionList::mapType & other);
-
+		OptionList::mapType mOptions;
 
 	};
+
+
+} // namespace internal
 
 
 } // namespace curlpp

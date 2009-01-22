@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -25,9 +25,10 @@
 #define CURLPP_OPTION_HPP
 
 
-#include "buildconfig.h"
-#include "OptionBase.hpp"
+#include "curlpp/internal/buildconfig.h"
 #include "curlpp/internal/OptionContainer.hpp"
+
+#include "curlpp/OptionBase.hpp"
 
 
 namespace curlpp
@@ -107,7 +108,7 @@ namespace curlpp
 		virtual void clear();
 
 		/**
-		* will update the value of the option with the value of the
+		* Will update the value of the option with the value of the
 		* option passed is argument.
 		*/
 		virtual void updateMeToOption(const OptionBase & other);
@@ -144,6 +145,7 @@ namespace curlpp
 	template<typename OptionType, CURLoption option>
 	class CURLPPAPI OptionTrait : public Option<OptionType>
 	{
+		
 		friend class Easy;
 
 	public:
@@ -175,7 +177,7 @@ namespace curlpp
 		* will call the actual libcurl option function with the value we got 
 		* on the handle.
 		*/
-		virtual void updateHandleToMe(curlpp::CurlHandle * handle) const;
+		virtual void updateHandleToMe(internal::CurlHandle * handle) const;
 
 	};
 
@@ -237,7 +239,7 @@ namespace curlpp
 		* will call the actual libcurl option function with the value we got 
 		* on the handle.
 		*/
-		virtual void updateHandleToMe(curlpp::CurlHandle * handle) const;
+		virtual void updateHandleToMe(internal::CurlHandle * handle) const;
 
 	};
 
@@ -248,7 +250,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-#include "Option.inl"
+#include "curlpp/Option.inl"
 #endif
 
 

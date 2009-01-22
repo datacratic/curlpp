@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -25,16 +25,23 @@
 #define CURLPP_OPTION_BASE_HPP
 
 
-#include <curl/curl.h>
+#include "curlpp/internal/buildconfig.h"
 
-#include "buildconfig.h"
+#include <curl/curl.h>
 
 
 namespace curlpp
 {
 
 
-  class CurlHandle;
+namespace internal
+{
+
+
+	class CurlHandle;
+
+
+}
 
   /**
    * This is the parent of the curlpp::option class.
@@ -50,7 +57,7 @@ namespace curlpp
 		OptionBase(CURLoption option);
      
     /**
-     * The destructor.
+     * Base class needs virtual destructor.
      */
     virtual ~OptionBase();
          
@@ -79,7 +86,7 @@ namespace curlpp
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(curlpp::CurlHandle * handle) const = 0;
+    virtual void updateHandleToMe(internal::CurlHandle * handle) const = 0;
 
     /**
      * this function will reset the option value.

@@ -606,10 +606,31 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\examples\example00.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath=".\examples\example01.cpp"
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -625,6 +646,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="DynamicLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -1224,14 +1253,6 @@
 				RelativePath=".\examples\example11.cpp"
 				>
 				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="DynamicLibReleaseDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
@@ -1257,7 +1278,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="StaticLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2029,6 +2049,26 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="StaticLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\examples\example23.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool

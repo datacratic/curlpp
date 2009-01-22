@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -25,13 +25,13 @@
 #define CURLPP_TYPES_HPP
 
 
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 
 #ifdef HAVE_BOOST
 	#include <boost/function.hpp>
 #endif 
 
-#include <utilspp/Functors.hpp>
+#include "utilspp/Functors.hpp"
 
 
 namespace curlpp

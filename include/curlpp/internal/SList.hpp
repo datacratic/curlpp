@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,36 +21,73 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef CURLPP_TYPE_TRAIT_HPP
-#define CURLPP_TYPE_TRAIT_HPP
+#ifndef CURLPP_SLIST_HPP
+#define CURLPP_SLIST_HPP
 
 
-namespace utilspp
+#include "curlpp/internal/buildconfig.h"
+
+#include <curl/curl.h>
+
+#include <list>
+
+
+namespace curlpp
 {
 
-  template<typename U>
-  struct TypeTrait
-  {
-    typedef U ParamType;
-    typedef U UnConst;
-  };
 
-  template<typename V>
-  struct TypeTrait<const V>
-  {
-    typedef typename Utilspp::TypeTrait<V>::ParamType ParamType;
-    typedef V UnConst;
-  };
-
-  template<typename V>
-  struct TypeTrait<V*>
-  {
-    typedef V* ParamType; 
-    typedef V* UnConst;
-  };
+namespace internal
+{
 
 
-} // namespace utilspp
+	/**
+	* This class is binding the curl_slist struct.
+	*/
+
+	class CURLPPAPI SList
+	{
+
+	public:
+
+		SList();
+		SList(const SList & rhs);
+
+		/**
+		* The list passed in as an argument is now possessed by the class.
+		*/
+		SList(curl_slist * list);
+
+		explicit SList(const std::list<std::string> & list);
+		~SList();
+
+		SList & operator=(const std::list<std::string> & list);
+		operator std::list<std::string>();
+
+		curl_slist * cslist() const;
+		std::list<std::string> list();
+
+	private:
+
+		void set(const std::list<std::string> & list);
+		void update();
+		void clear();
+		void constructFrom(curl_slist * list);
+
+		curl_slist * mList;
+		std::list<std::string> mData;
+
+	};
 
 
-#endif // #ifndef CURLPP_TYPE_TRAIT_HPP
+} // namespace internal
+
+
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
+
+
+std::ostream CURLPPAPI & operator<<(std::ostream & stream, const std::list<std::string> & value);
+
+
+#endif // #ifndef CURLPP_SLIST_HPP

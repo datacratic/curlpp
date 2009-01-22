@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2006> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,64 +21,36 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef CURLPP_SLIST_HPP
-#define CURLPP_SLIST_HPP
 
+#ifndef CURLPP_OPTIONSETTER_INL
+#define CURLPP_OPTIONSETTER_INL
 
-#include <curl/curl.h>
-#include <list>
+#include <string>
 
-#include "buildconfig.h"
-
-
-namespace curlpp
+template<typename OptionValueType, CURLoption optionType>
+void
+curlpp::internal::OptionSetter<OptionValueType, optionType>
+::setOpt(internal::CurlHandle * handle, ParamType value)
 {
-
-	/**
-	* This class is binding the curl_slist struct.
-	*/
-
-	class CURLPPAPI SList
-	{
-
-	public:
-
-		SList();
-		SList(const SList & rhs);
-
-		/**
-		* The list passed in argument is now possessed by the class.
-		*/
-		SList(curl_slist * list);
-
-		SList(const std::list<std::string> & list);
-		~SList();
-
-		SList & operator=(const std::list<std::string> & list);
-		operator std::list<std::string>();
-
-		curl_slist * cslist() const;
-		std::list<std::string> list();
-
-	private:
-
-		void set(const std::list<std::string> & list);
-		void update();
-		void clear();
-		void constructFrom(curl_slist * list);
+  handle->option(optionType, value);
+}
 
 
-		curl_slist * mList;
-		std::list<std::string> mData;
-
-	};
-
-} // namespace curlpp
-
-namespace cURLpp = curlpp;
-
-
-std::ostream CURLPPAPI & operator<<(std::ostream & stream, const std::list<std::string> & value);
+template<CURLoption optionType>
+void
+curlpp::internal::OptionSetter<std::string, optionType>
+::setOpt(internal::CurlHandle * handle, ParamType value)
+{
+	handle->option(optionType, (void *)value.c_str());
+}
 
 
-#endif // #ifndef CURLPP_SLIST_HPP
+template<CURLoption optionType>
+void
+curlpp::internal::OptionSetter<std::list<std::string>, optionType>
+::setOpt(internal::CurlHandle * handle, ParamType value)
+{
+	handle->option(optionType, (void *)value.cslist());
+}
+
+#endif

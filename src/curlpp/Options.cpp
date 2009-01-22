@@ -21,7 +21,7 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 
 #include "curlpp/Options.hpp"
 #include "curlpp/Easy.hpp"
@@ -37,5 +37,5 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & ur
 }
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "Options.ins"
+	#include "./Options.ins"
 #endif

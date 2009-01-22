@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -28,10 +28,12 @@
 #define LIBCURLPP_VERSION "0.7.2"
 #define LIBCURLPP_VERSION_NUM 0x000702
 
-#include <string>
+
+#include "curlpp/internal/buildconfig.h"
+
 #include <curl/curl.h>
 
-#include "buildconfig.h"
+#include <string>
 
 
 namespace curlpp

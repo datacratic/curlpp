@@ -1,5 +1,5 @@
 /*
-*    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+*    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
@@ -24,11 +24,13 @@
 #ifndef CURLPP_EXCEPTION_HPP
 #define CURLPP_EXCEPTION_HPP
 
+
+#include "curlpp/internal/buildconfig.h"
+
 #include <curl/curl.h>
+
 #include <string>
 #include <stdexcept>
-
-#include "buildconfig.h"
 
 
 namespace curlpp

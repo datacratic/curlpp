@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -25,12 +25,13 @@
 #define CURLPP_OPTION_CONTAINER_TYPE_HPP
 
 
+#include "curlpp/internal/SList.hpp"
+
+#include "curlpp/Form.hpp"
+#include "curlpp/Types.hpp"
+
 #include <string>
 #include <list>
-
-#include "SList.hpp"
-#include "Form.hpp"
-#include "Types.hpp"
 
 
 namespace curlpp
@@ -121,9 +122,9 @@ namespace internal
 	public:
 
 		typedef const std::list<std::string> & ParamType;
-		typedef curlpp::SList ValueType;
+		typedef SList ValueType;
 		typedef std::list<std::string> ReturnType;
-		typedef const curlpp::SList & HandleOptionType;
+		typedef const SList & HandleOptionType;
 
 	};
 

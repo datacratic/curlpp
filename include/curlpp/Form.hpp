@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -24,12 +24,14 @@
 #ifndef CURLPP_FORM_HPP
 #define CURLPP_FORM_HPP
 
+
+#include "curlpp/internal/buildconfig.h"
+#include "utilspp/clone_ptr.hpp"
+
 #include <curl/curl.h>
+
 #include <list>
 #include <string>
-
-#include "buildconfig.h"
-#include <utilspp/clone_ptr.hpp>
 
 
 namespace curlpp
