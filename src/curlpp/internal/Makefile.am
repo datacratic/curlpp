@@ -28,9 +28,9 @@ if NO_UNDEFINED
 # find a case in which we need to remove this flag, we should most likely
 # write a configure check that detects when this flag is needed and when its
 # not.
-libcurlpp_la_LDFLAGS = -no-undefined -Wno-inline-dllimport $(VERSION) 
+libinternal_la_LDFLAGS = -no-undefined -Wno-inline-dllimport $(VERSION) 
 else
-libcurlpp_la_LDFLAGS = $(VERSION)
+libinternal_la_LDFLAGS = $(VERSION)
 endif
 
 
