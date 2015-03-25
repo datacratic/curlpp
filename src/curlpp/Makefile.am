@@ -20,7 +20,7 @@ sources = \
 	autolink.h \
 	${maintener_source}
 
-libcurlpp_la_LIBADD = internal/libinternal.la
+libcurlpp_la_LIBADD = internal/libinternal.la -lcurl
 libcurlpp_la_SOURCES = ${sources}
 VERSION=-version-info 0:2:0
 
