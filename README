@@ -1,4 +1,7 @@
 README
+
+  [Update] Revised to compile with OSX (Mac) (The library no longer fails to compile when linked from a project using CMake).
+
   Study the COPYING file for distribution terms and similar.
 
   Visit the cURLpp web site or mirrors for the latest news:
