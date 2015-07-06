@@ -46,7 +46,7 @@ AC_PROG_LIBTOOL
 
 LIBTOOL="$LIBTOOL --silent"
 
-CXXFLAGS="`echo $CXXFLAGS | sed -e 's/-O[[0-9]]*//'`"
+CXXFLAGS="`echo $CXXFLAGS | sed -e 's/-O[[0-9s]][[0-9s]]*//'`"
 CURLPP_CXXFLAGS=""
 
 case $host in
