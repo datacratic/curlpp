@@ -23,6 +23,7 @@ findtool(){
 #--------------------------------------------------------------------------
 # autoconf 2.57 or newer
 #
+echo "Starting autoconf check"
 need_autoconf="2.57"
 ac_version=`${AUTOCONF:-autoconf} --version 2>/dev/null|head -1| sed -e 's/^[^0-9]*//' -e 's/[a-z]* *$//'`
 if test -z "$ac_version"; then
@@ -30,6 +31,7 @@ if test -z "$ac_version"; then
   echo "            You need autoconf version $need_autoconf or newer installed."
   exit 1
 fi
+echo "Pass buildconf check"
 IFS=.; set $ac_version; IFS=' '
 if test "$1" = "2" -a "$2" -lt "57" || test "$1" -lt "2"; then
   echo "buildconf: autoconf version $ac_version found."
@@ -39,12 +41,14 @@ if test "$1" = "2" -a "$2" -lt "57" || test "$1" -lt "2"; then
   echo "            AUTOCONF environment variable."
   exit 1
 fi
+echo "Pass autoconf check"
 
 echo "buildconf: autoconf version $ac_version (ok)"
 
 #--------------------------------------------------------------------------
 # autoheader 2.50 or newer
 #
+echo "Starting autoheader check"
 ah_version=`${AUTOHEADER:-autoheader} --version 2>/dev/null|head -1| sed -e 's/^[^0-9]*//' -e 's/[a-z]* *$//'`
 if test -z "$ah_version"; then
   echo "buildconf: autoheader not found."
@@ -89,6 +93,7 @@ echo "buildconf: automake version $am_version (ok)"
 #--------------------------------------------------------------------------
 # libtool check
 #
+echo "Starting libtool check"
 LIBTOOL_WANTED_MAJOR=1
 LIBTOOL_WANTED_MINOR=4
 LIBTOOL_WANTED_PATCH=2
