@@ -251,7 +251,7 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_PUT> Put;
 	typedef curlpp::OptionTrait<bool, CURLOPT_UPLOAD> Upload;
 	typedef curlpp::OptionTrait<bool, CURLOPT_POST> Post;
-	typedef curlpp::OptionTrait<std::string, CURLOPT_POSTFIELDS> PostFields;
+	typedef curlpp::OptionTrait<const void*, CURLOPT_POSTFIELDS> PostFields;
 	typedef curlpp::OptionTrait<long, CURLOPT_POSTFIELDSIZE> PostFieldSize;
 	typedef curlpp::OptionTrait<curl_off_t, CURLOPT_POSTFIELDSIZE_LARGE> PostFieldSizeLarge;
 	typedef curlpp::OptionTrait<curlpp::Forms, CURLOPT_HTTPPOST> HttpPost;
