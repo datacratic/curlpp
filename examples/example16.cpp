@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     
     request.setOpt(new curlpp::options::HttpHeader(header)); 
     
-    request.setOpt(new curlpp::options::PostFields("abcd"));
+    request.setOpt(new curlpp::options::PostFields((const void*)"abcd"));
     request.setOpt(new curlpp::options::PostFieldSize(5));
 
     request.setOpt(new curlpp::options::UserPwd("user:password"));
